@@ -1,25 +1,24 @@
-# 버전 3 정의, 컨테이너 이름에 감싸서 사용
-# 컨테이너 내에 1.도커 파일 사용, 2 포트 맵핑 과 같은 내용들이 추가될 예정
 
 version: "3"
+
 services:
-    react:
-        build:
-            context: .
-            dockerfile: Dockerfile.dev
-        ports:
-         - "3000:3000"
-        volumes:
-         - /usr/src/app/node_modules
-         - ./:/usr/src/app
-        stdin_open: true
-        environment:
-         - CHOKIDAR_USEPOLLING=true
-    tests:
-        build:
-            context: .
-            dockerfile: Dockerfile.dev
-        volumes:
-         - /usr/src/app/node_modules
-         - ./:/usr/src/app
-        command: ["npm", "run", "test"]
+
+react:
+
+build:
+
+context: .
+
+dockerfile: Dockerfile
+
+ports:
+
+- '80:80'
+
+volumes:
+
+- /usr/src/app/node_modules
+
+- ./:/usr/src/app
+
+stdin_open: true
